@@ -1,11 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2015",
     "module": "commonjs",
-    "experimentalDecorators": true
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true, 
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "declaration": false,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
   },
   "exclide":[],
   "include": [
-    "src/**/*.ts"
+    "src/loader/**/*.ts",
+    "src/plugin/**/*.ts"
   ]
 }
