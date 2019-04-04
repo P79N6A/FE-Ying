@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "declaration": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+  },
+  "exclide": ["dis/**/*.ts", "dis/**/*.tsx"],
+  "include": ["src/loader/**/*.ts", "src/plugin/**/*.ts"]
+}
