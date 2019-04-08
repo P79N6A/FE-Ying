@@ -4,7 +4,14 @@ const { watch } = require('gulp');
 const tsProject = ts.createProject('tsconfig.json');
 const watcher = watch(['./src/**/*.ts']);
 
-const staticPath = ['./src/**/*.txt', './src/**/*.json', './src/**/*.js', './src/**/test/**/*.ts'];
+const staticPath = [
+    './src/**/*.txt',
+    './src/**/*.json',
+    './src/**/*.js',
+    './src/**/test/**/*.ts',
+    './src/**/test/**/*.tsx',
+    './src/**/test/**/*.wxml',
+];
 
 const staticTask = cb => {
     gulp.src(staticPath).pipe(gulp.dest('dist'));
@@ -21,10 +28,10 @@ const build = cb => {
 };
 
 const watchTask = cb => {
-    staticTask(cb)
+    staticTask(cb);
     build(cb);
     watcher.on('change', () => {
-        staticTask(cb)
+        staticTask(cb);
         build(cb);
         cb();
     });
