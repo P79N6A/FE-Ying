@@ -15,7 +15,8 @@
     "acorn-walk": "^6.1.1",
     "circular-json-es6": "^2.0.2",
     "ramda": "^0.26.1",
-    "ts-loader": "^5.3.3"
+    "ts-loader": "^5.3.3",
+    "@typescript-eslint/typescript-estree": "^1.5.0"
   },
   "devDependencies": {
     "@types/acorn": "^4.0.2",

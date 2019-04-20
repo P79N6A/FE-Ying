@@ -1,8 +1,9 @@
 class RenderString {
     render() {
+        const name_1 = "haoxubin";
         return (
             <div className="page">
-                <div className="empty">hello world</div>
+                <div>{name_1}</div>
             </div>
         );
     }
