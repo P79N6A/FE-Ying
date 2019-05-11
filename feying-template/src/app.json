@@ -1,0 +1,15 @@
+{
+    "pages": [
+        "pages/home/index",
+        "pages/awex/index",
+        "pages/tsx/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Atop Start",
+        "navigationBarTextStyle": "black",
+        "onReachBottomDistance": 400,
+        "enablePullDownRefresh": false
+    }
+}

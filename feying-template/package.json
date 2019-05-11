@@ -1,0 +1,46 @@
+{
+    "name": "<%- name %>",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "webpack --colors --progress --config build/webpack.dev.js -w",
+        "build": "rm -rf dist & webpack --colors --progress --config build/webpack.prod.js",
+        "clear": "rm -rf dist",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@byted/atop-tsx-loader": "^2.0.4",
+        "@byted/atop-webpack-plugin": "^2.4.4",
+        "@types/node": "^10.5.1",
+        "@types/weixin-app": "^1.9.0",
+        "autoprefixer": "^9.2.1",
+        "awex": "^1.3.2",
+        "copy-webpack-plugin": "^4.5.2",
+        "css-loader": "^1.0.0",
+        "extract-loader": "^2.0.1",
+        "file-loader": "^1.1.11",
+        "html-loader": "^0.5.5",
+        "html-webpack-plugin": "^3.2.0",
+        "less": "^3.8.1",
+        "less-loader": "^4.1.0",
+        "mini-css-extract-plugin": "^0.4.4",
+        "mp-apis": "^1.2.2",
+        "postcss-import": "^11.1.0",
+        "postcss-loader": "^3.0.0",
+        "postcss-mpvue-wxss": "^1.0.0",
+        "ts-loader": "^4.4.1",
+        "tslint-simple-config": "^1.0.8",
+        "typescript": "^2.9.2",
+        "url-loader": "^1.0.1",
+        "webpack": "^4.12.2",
+        "webpack-cli": "^3.0.8",
+        "webpack-fix-style-only-entries": "^0.0.4",
+        "webpack-merge": "^4.1.3"
+    },
+    "dependencies": {
+        "@byted/atop-app": "^2.0.6"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "description": "项目配置文件。",
+    "setting": {
+        "urlCheck": false,
+        "es6": true,
+        "postcss": true,
+        "minified": true,
+        "newFeature": true
+    },
+    "compileType": "miniprogram",
+    "appid": "<%- appid %>",
+    "projectname": "AtopDemo"
+}

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "AtopDemo",
+    "usingComponents": {
+        "comp": "../../components/item/index"
+    }
+}

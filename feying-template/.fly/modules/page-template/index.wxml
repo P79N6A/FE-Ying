@@ -1,0 +1,3 @@
+<view class="p-<%- name %>">
+    <view class="p-<%- name %>-title">Hello <%- name %>!</view>
+</view>

@@ -1,0 +1,12 @@
+<view class="p-awex">
+    <view class="p-awex-title">awex</view>
+    <view class="p-awex-count">{{count}}</view>
+    <view class="p-awex-actions">
+        <view class="p-awex-add" bindtap="add">+1</view>
+        <view class="p-awex-add" bindtap="minus">-1</view>
+    </view>
+    <view class="p-awex-actions">
+        <view class="p-awex-add" bindtap="addAsync">+1 async</view>
+        <view class="p-awex-add" bindtap="minusAsync">-1 async</view>
+    </view>
+</view>

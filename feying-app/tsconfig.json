@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "typeRoots": ["node_modules/@types"],
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "importHelpers": true,
+        "declaration": true,
+        "declarationDir": "lib",
+        "strict": true,
+        "lib": ["dom", "es2016"],
+        "allowSyntheticDefaultImports": true,
+        "outDir": "lib",
+        "skipLibCheck": true,
+    },
+    "include": ["./src/**/*.ts"]
+}

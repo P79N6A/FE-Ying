@@ -2,29 +2,58 @@
 import * as path from 'path';
 import * as ts from 'typescript';
 import * as R from 'ramda';
+import * as fs from 'fs';
 import * as acorn from 'acorn-jsx';
 import * as walk from 'acorn-walk';
-import walkers  from './walks.test';
+import * as loaderUtils from 'loader-utils';
+import walkers from './walks.test';
 import { write } from './utils/log';
+
+// 工具函数放在前面
+/**
+ * 处理membet
+ */
+const parseMember = R.map(
+    ({ name: { escapedText }, body, type, kind, pos, end }) => ({
+        type,
+        body,
+        kind,
+        pos,
+        end,
+        name: escapedText,
+    }),
+);
 
 /**
  * 处理class
  * @param {String} [name]
  * @returns
  */
-// function parseClassNode() {
-//     return R.compose<any, any, any, any, any>(
-//         R.head,
-//         R.map(({ name: { text: className }, decorators, members }) => ({
-//             className,
-//             members: members && parseMember()(members),
-//         })),
-//         R.filter(R.propEq('kind', ts.SyntaxKind.ClassDeclaration)),
-//         R.prop('statements'),
-//     );
-// }
+const parseClassNode = R.compose<any, any, any, any, any>(
+    R.head,
+    R.map(({ name: { escapedText: className }, members }) => ({
+        className,
+        members: members && parseMember(members),
+    })),
+    R.filter(R.propEq('kind', ts.SyntaxKind.ClassDeclaration)),
+    R.prop('statements'),
+);
 
-// 工具函数放在前面
+function parseComponentsPath(state: any, resource: string) {
+    const keys = Object.keys(state.components);
+    keys.forEach(c => {
+        const value = state.components[c];
+        const abs = p => path.resolve(path.dirname(resource), p);
+        const files = [value, `${value}/index`];
+        const realPath = files.find(
+            e =>
+                fs.existsSync(`${abs(e)}.tsx`) ||
+                fs.existsSync(`${abs(e)}.ts`) ||
+                fs.existsSync(`${abs(e)}.json`),
+        );
+        state.components[c] = realPath;
+    });
+}
 
 /**
  * 获取当前page的路径
@@ -61,32 +90,47 @@ function walkCode(code: any, filePath: string) {
     const state = {
         filePath,
         ele: null,
-        data: {}, // page 成员变量data
-        renderData: {}, // render 中变量data,
-        constants: {}, // 全局常量
-        components: {},
-        imports: {},
+        data: new Map(), // page 成员变量data
+        renderData: new Map(), // render 中变量data,
+        constants: new Map(), // 全局常量
+        components: new Map(),
+        attribute: new Map(),
+        imports: new Map(),
         isRender: false,
         eleData: null,
     };
 
-    walk.simple(ast, {} , walkers, state, undefined);
+    walk.simple(ast, {}, walkers, state, undefined);
 
     write('tree.json', state);
-
-    // state.renderData = parseRenderDataConst(state.renderData);
-
-    // write('tree-after.json', state);
-
+    
     return state;
 }
 
-
 export default function(source: string) {
-    // TODO: 获取处理组件路径 判断是组件or页面
+    // 获取处理组件路径 判断是组件or页面
+    const dir = path.resolve(this.rootContext, 'src');
+
+    const query = loaderUtils.getOptions(this) || {};
+    const sourceFile = ts.createSourceFile(
+        this.resourcePath,
+        source,
+        ts.ScriptTarget.ES2016,
+        false,
+    );
+    write('sourceFile.js', sourceFile);
+    const page = parseClassNode(sourceFile);
 
     // TODO: 对于非规定目录的jsx进行报错处理
 
+    const dirPath =
+        getPagePath(this.resourcePath) || getComponentPath(this.resourcePath);
+
+    if (!dirPath) {
+        throw new Error(
+            `${this.resourcePath} 不在pages 或者 components目录下!!`,
+        );
+    }
 
     // 把tsx转换成jsx 方便后期处理
     const jsCode = ts.transpileModule(source, {
@@ -98,7 +142,7 @@ export default function(source: string) {
     });
 
     // 遍历语法树 提取信息&转换信息
-    const state = walkCode(jsCode.outputText, this.resourcePath)
+    const state = walkCode(jsCode.outputText, this.resourcePath);
 
     // TODO: 生成wxml文件
 

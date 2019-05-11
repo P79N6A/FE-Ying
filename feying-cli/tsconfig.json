@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "target": "es5",
+        "strict": true,
+        "importHelpers": true,
+        "noImplicitAny": true,
+        "lib": ["esnext"],
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
+        "outDir": "lib",
+        "declaration": true,
+        "declarationDir": "lib"
+    },
+    "exclude": ["test", "lib"],
+    "include": ["src"]
+}

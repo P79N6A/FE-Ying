@@ -1,0 +1,13 @@
+{
+  "name": "",
+  "git": true,
+  "typescript": false,
+  "dist": "dist",
+  "appid": "",
+  "sentry": false,
+  "log": false,
+  "lint": false,
+  "template": "",
+  "templateName": "",
+  "modules": []
+}

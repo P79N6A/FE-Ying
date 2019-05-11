@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es6",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "typeRoots": ["node_modules/@types"],
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "importHelpers": true,
+        "strict": true,
+        "lib": ["dom", "es2016"],
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+    },
+    "include": ["./src/**/*.ts", "./config/*.ts"]
+}

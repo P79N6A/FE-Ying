@@ -1,0 +1,6 @@
+<view class="p-home">
+    <view class="p-home-title">Hello Atop!</view>
+    <comp />
+    <view class="p-home-tsx" bindtap="jumpToTsxPage">点击测试TSX</view>
+    <view class="p-home-tsx" bindtap="jumpToAwexPage">点击测试Awex</view>
+</view>

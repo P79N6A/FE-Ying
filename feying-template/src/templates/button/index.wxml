@@ -1,0 +1,3 @@
+<template name="button">
+    <view class="c-button">{{text || "按钮"}}</view>
+</template>

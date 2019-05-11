@@ -1,0 +1,28 @@
+{
+  "name": "@byted/atop-app",
+  "version": "1.2.0",
+  "description": "",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "typings": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://code.byted.org/pgcfe/atop-app.git"
+  },
+  "keywords": [
+    "miniapp",
+    "microapp",
+    "atop"
+  ],
+  "author": "lixucheng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://code.byted.org/pgcfe/atop-app/issues"
+  },
+  "homepage": "https://code.byted.org/pgcfe/atop-app",
+  "devDependencies": {
+    "@types/weixin-app": "^1.9.5"
+  }
+}
